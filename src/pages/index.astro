@@ -1,0 +1,7 @@
+---
+import Page from '../layouts/Page.astro';
+import Comic from '../components/Comic.astro';
+import comics from '../data/comics.json';
+const latest = comics.at(-1);
+---
+<Page current="latest">{latest ? <Comic comic={latest} previous={comics.at(-2)}/> : <div class="inner"><h1>Strips coming soon.</h1></div>}</Page>

@@ -1,0 +1,8 @@
+---
+const { comic, previous, next } = Astro.props;
+---
+<div class="strip-heading"><h1>{comic.title}</h1><span class="number">no. {String(comic.number).padStart(3,'0')}</span></div>
+<div class="full-strip"><img src={comic.full} width={comic.fullWidth} height={comic.fullHeight} alt={comic.alt}/></div>
+<ol class="panel-strip" aria-label={comic.title}>{comic.panels.map((p,i) => <li><img src={p.variants.at(-1).src} srcset={p.variants.map(v => v.src+' '+v.width+'w').join(', ')} sizes="(max-width: 599px) calc(100vw - 32px), (max-width: 899px) calc((100vw - 56px) / 2), 540px" width={p.width} height={p.height} alt={p.alt} loading={i === 0 ? 'eager' : 'lazy'}/></li>)}</ol>
+{comic.transcript && <details class="transcript"><summary>transcript</summary><div class="transcript-text">{comic.transcript}</div></details>}
+<nav class="bottom-nav" aria-label="Comic navigation">{previous ? <a href={'/strips/'+previous.slug+'/'}>← previous</a> : <span/>}<a href="/archive/">all the strips</a>{next ? <a href={'/strips/'+next.slug+'/'}>next →</a> : <span/>}</nav>

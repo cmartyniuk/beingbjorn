@@ -1,0 +1,9 @@
+---
+import Page from '../../layouts/Page.astro';
+import Comic from '../../components/Comic.astro';
+import comics from '../../data/comics.json';
+export function getStaticPaths() {
+  return comics.map((comic,i) => ({params:{slug:comic.slug},props:{comic,previous:comics[i-1],next:comics[i+1]}}));
+}
+---
+<Page title={Astro.props.comic.title+" — It's Not Easy Being Bjorn"}><Comic {...Astro.props}/></Page>

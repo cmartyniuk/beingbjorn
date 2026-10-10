@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bjorn panel coordinates</title>
+<style>body{font:18px system-ui;max-width:1100px;margin:24px auto;padding:0 16px;background:#fbf6e9;color:#292722}button,input{font:inherit;margin:8px 8px 8px 0}canvas{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair;background:white}textarea{width:100%;min-height:260px;box-sizing:border-box;font:14px monospace}p{line-height:1.5}</style>
+<h1>Pick the panels</h1><p>Open the original PNG. Drag around each panel in reading order, including its borders and speech bubbles. Coordinates use the original pixels, even when the image is scaled here. Add a final crop for any bottom caption you want on mobile.</p>
+<input id="file" type="file" accept="image/png"><button id="undo">Undo last</button><button id="reset">Clear</button><button id="copy">Copy YAML</button><p id="status" role="status"></p><canvas id="canvas"></canvas><textarea id="yaml" aria-label="Panel coordinate YAML"></textarea>
+<script>
+const canvas=document.querySelector('#canvas'),ctx=canvas.getContext('2d'),output=document.querySelector('#yaml'),status=document.querySelector('#status');
+let image=null,rects=[],start=null,live=null,url=null;
+function point(e){const b=canvas.getBoundingClientRect();return {x:Math.max(0,Math.min(canvas.width,Math.round((e.clientX-b.left)*canvas.width/b.width))),y:Math.max(0,Math.min(canvas.height,Math.round((e.clientY-b.top)*canvas.height/b.height)))}}
+function rectangle(a,b){return {x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),width:Math.abs(a.x-b.x),height:Math.abs(a.y-b.y)}}
+function draw(){if(!image)return;ctx.drawImage(image,0,0);ctx.lineWidth=Math.max(2,canvas.width/500);ctx.font=Math.max(20,canvas.width/50)+'px sans-serif';[...rects,...(live?[live]:[])].forEach((r,i)=>{ctx.fillStyle='#cf644d22';ctx.fillRect(r.x,r.y,r.width,r.height);ctx.strokeStyle='#ca3924';ctx.strokeRect(r.x,r.y,r.width,r.height);ctx.fillStyle='#ca3924';ctx.fillText(String(i+1),r.x+8,r.y+32)});}
+function update(){draw();if(!image)return;output.value='sourceWidth: '+canvas.width+'\nsourceHeight: '+canvas.height+'\npanels:\n'+rects.map((r,i)=>'  - x: '+r.x+'\n    y: '+r.y+'\n    width: '+r.width+'\n    height: '+r.height+'\n    alt: "Describe panel '+(i+1)+' and its dialogue."').join('\n');status.textContent=rects.length+' panel(s) selected. Paste YAML over the dimensions and panels in the strip Markdown.';}
+document.querySelector('#file').onchange=async(e)=>{if(!e.target.files[0])return;if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(e.target.files[0]);const next=new Image();next.onload=()=>{image=next;canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;rects=[];update()};next.src=url;};
+canvas.onpointerdown=e=>{if(!image)return;start=point(e);canvas.setPointerCapture(e.pointerId)};
+canvas.onpointermove=e=>{if(!start)return;live=rectangle(start,point(e));draw()};
+canvas.onpointerup=e=>{if(!start)return;const r=rectangle(start,point(e));if(r.width&&r.height)rects.push(r);start=null;live=null;update()};
+canvas.onpointercancel=()=>{start=null;live=null;draw()};
+document.querySelector('#undo').onclick=()=>{rects.pop();update()};
+document.querySelector('#reset').onclick=()=>{rects=[];update()};
+document.querySelector('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(output.value);status.textContent='Copied.'}catch{output.select();status.textContent='Select and copy the YAML below.'}};
+</script></html>
