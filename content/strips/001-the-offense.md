@@ -13,37 +13,35 @@ panels:
     y: 107
     width: 481
     height: 472
-    alt: "Describe panel 1 and its dialogue."
+    alt: 'A tall villager stands on Bjorn’s feet. Bjorn winces and says, “Ow, you’re stepping on my feet!”'
   - x: 491
     y: 105
     width: 471
     height: 474
-    alt: "Describe panel 2 and its dialogue."
+    alt: 'The villager looks down at Bjorn without moving his feet. Bjorn looks back at him, unimpressed.'
   - x: 964
     y: 103
     width: 481
     height: 477
-    alt: "Describe panel 3 and its dialogue."
+    alt: 'The villager lifts one foot while his other foot remains on Bjorn’s toes. Bjorn watches warily.'
   - x: 1
     y: 583
     width: 485
     height: 437
-    alt: "Describe panel 4 and its dialogue."
+    alt: 'The villager plants his foot back on Bjorn’s feet. Bjorn throws up his hands and cries, “OW!”'
   - x: 489
     y: 581
     width: 473
     height: 438
-    alt: "Describe panel 5 and its dialogue."
+    alt: 'Bjorn stomps away, hunched and scowling, with an angry squiggle above his head. The villager watches him leave.'
   - x: 964
     y: 582
     width: 479
     height: 438
-    alt: "Describe panel 6 and its dialogue."
+    alt: 'The villager stands alone, looking after Bjorn, and says, “Jeez, he’s so sensitive.”'
   - x: 53
     y: 1025
     width: 1332
     height: 57
-    alt: "Describe panel 7 and its dialogue."
----
+    alt: 'When someone says you’ve hurt them, what more evidence do you need?'
 
-Optional transcript goes here. It appears inside a collapsed “transcript” disclosure.
