@@ -1,0 +1,32 @@
+---
+import '../styles/site.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Page not found — It's Not Easy Being Bjorn</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  </head>
+  <body>
+    <main class="missing">
+      <h1>Nothing here.</h1>
+      <img src="/images/bjorn-404.webp" width="1448" height="1086"
+        alt="Bjorn shrugs with empty hands beside a stone marked 404." />
+      <p>Somehow, still my problem.</p>
+      <nav aria-label="Return to the comic"><a href="/">back to Bjorn →</a><a href="/archive/">all the strips</a></nav>
+    </main>
+  </body>
+</html>
+<style>
+  .missing{width:min(760px,calc(100% - 32px));margin:35px auto 55px;text-align:center}
+  .missing h1{font-size:clamp(2rem,6vw,3.4rem);margin:0 0 12px}
+  .missing img{display:block;width:100%;height:auto}
+  .missing p{font-size:clamp(1.2rem,4vw,1.6rem);margin:12px 0 24px}
+  .missing nav{display:flex;justify-content:center;flex-wrap:wrap;gap:28px}
+  .missing a{border-bottom:2px solid currentColor}
+</style>
