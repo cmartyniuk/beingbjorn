@@ -1,0 +1,16 @@
+Copy the files inside public/ into bjorn-astro/public/.
+
+Add these tags inside <head> in src/layouts/Page.astro:
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+
+Then from bjorn-astro/:
+git add public/ src/layouts/Page.astro
+git commit -m "Add Bjorn favicon and Apple touch icon"
+git push
+
+icon-192.png and icon-512.png are included for future app/manifest use.
+Browsers cache favicons; a private window can help check the update.
