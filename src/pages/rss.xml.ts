@@ -5,7 +5,7 @@ export function GET({ site }: { site: URL }) {
   const absolute = (p: string) => new URL(p, site).href;
   const items = [...comics].reverse().map(c => {
     const url = absolute('/strips/' + c.slug + '/');
-    const text = c.transcript || c.panels.map(p => p.alt).join('\n\n');
+    const text = (c.transcript || c.panels.map(p => p.alt).join('\n\n')) + (c.aphorism ? '\n\n' + c.aphorism : '');
     const html = '<p>' + escapeXML(c.alt) + '</p><p><img src="' + escapeXML(absolute(c.full)) +
       '" alt="' + escapeXML(c.alt) + '" /></p>' +
       text.split(/\n\s*\n/).map(p => '<p>' + escapeXML(p) + '</p>').join('') +

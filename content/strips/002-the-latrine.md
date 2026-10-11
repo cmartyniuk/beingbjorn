@@ -5,7 +5,8 @@ slug: the-latrine
 draft: false
 image: 002-the-latrine.png
 alt: Bjorn and the neighbor's latrine.
-# Example only: use the panel tool to measure the chosen PNG.
+aphorism: "Someone else's generosity usually costs them something."
+
 sourceWidth: 1536
 sourceHeight: 1024
 panels:
@@ -39,9 +40,4 @@ panels:
     width: 511
     height: 448
     alt: 'Bjorn trudges away, scowling, soaked and dripping, with wavy smell lines rising from him. The villager says, “Jeez, he sure made that uncomfortable.”'
-  - x: 249
-    y: 979
-    width: 1023
-    height: 45
-    alt: 'Someone else’s generosity usually costs them something.'
 

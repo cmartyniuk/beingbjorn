@@ -14,6 +14,7 @@ for (const file of files) {
   const fail = message => { throw new Error(file + ': ' + message); };
   if (d.draft !== undefined && typeof d.draft !== 'boolean') fail('draft must be true or false');
   if (d.draft === true) continue;
+  if (d.aphorism !== undefined && typeof d.aphorism !== 'string') fail('aphorism must be text');
   if (!d.title || !d.alt || !integer(d.number, 1) || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(d.slug)) fail('invalid title, alt, number or slug');
   if (numbers.has(d.number) || slugs.has(d.slug)) fail('duplicate number or slug');
   numbers.add(d.number); slugs.add(d.slug);
@@ -40,7 +41,7 @@ for (const file of files) {
     }
     panels.push({...p, variants});
   }
-  comics.push({title:d.title, number:d.number, slug:d.slug, alt:d.alt, full:base+'full.webp', fullWidth, fullHeight:Math.round(meta.height*fullWidth/meta.width), panels, transcript:content.trim()});
+  comics.push({aphorism:(d.aphorism || '').trim(), title:d.title, number:d.number, slug:d.slug, alt:d.alt, full:base+'full.webp', fullWidth, fullHeight:Math.round(meta.height*fullWidth/meta.width), panels, transcript:content.trim()});
 }
 comics.sort((a,b) => a.number-b.number);
 await fs.mkdir('src/data', {recursive:true});

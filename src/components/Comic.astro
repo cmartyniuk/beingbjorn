@@ -2,7 +2,14 @@
 const { comic, previous, next } = Astro.props;
 ---
 <div class="strip-heading"><h1>{comic.title}</h1><span class="number">no. {String(comic.number).padStart(3,'0')}</span></div>
-<div class="full-strip"><img src={comic.full} width={comic.fullWidth} height={comic.fullHeight} alt={comic.alt}/></div>
-<ol class="panel-strip" aria-label={comic.title}>{comic.panels.map((p,i) => <li><img src={p.variants.at(-1).src} srcset={p.variants.map(v => v.src+' '+v.width+'w').join(', ')} sizes="(max-width: 599px) calc(100vw - 32px), (max-width: 899px) calc((100vw - 56px) / 2), 540px" width={p.width} height={p.height} alt={p.alt} loading={i === 0 ? 'eager' : 'lazy'}/></li>)}</ol>
+<ol class="panel-strip" aria-label={comic.title}>{comic.panels.map((p,i) => <li><img src={p.variants.at(-1).src} srcset={p.variants.map(v => v.src+' '+v.width+'w').join(', ')} sizes="(max-width: 599px) calc(100vw - 32px), (max-width: 899px) calc((100vw - 56px) / 2), (max-width: 1152px) calc((100vw - 78px) / 3), 358px" width={p.width} height={p.height} alt={p.alt} loading={i === 0 ? 'eager' : 'lazy'}/></li>)}</ol>
+{comic.aphorism && <p class="aphorism"><strong>{comic.aphorism}</strong></p>}
 {comic.transcript && <details class="transcript"><summary>transcript</summary><div class="transcript-text">{comic.transcript}</div></details>}
 <nav class="bottom-nav" aria-label="Comic navigation">{previous ? <a href={'/strips/'+previous.slug+'/'}>← previous</a> : <span/>}<a href="/archive/">all the strips</a>{next ? <a href={'/strips/'+next.slug+'/'}>next →</a> : <span/>}</nav>
+
+<style>
+  .panel-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aphorism { text-align: center; font-size: clamp(1.25rem, 2.5vw, 1.65rem); line-height: 1.4; margin: 24px auto 0; max-width: 900px; }
+  @media (max-width: 899px) { .panel-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 599px) { .panel-strip { grid-template-columns: 1fr; } }
+</style>

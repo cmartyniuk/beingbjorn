@@ -5,6 +5,7 @@ slug: the-offense
 draft: false
 image: 001-the-offense.png
 alt: A villager stands on Bjorn's feet.
+aphorism: "When someone says you've hurt them, what more evidence do you need?"
 
 sourceWidth: 1448
 sourceHeight: 1086
@@ -39,9 +40,4 @@ panels:
     width: 479
     height: 438
     alt: 'The villager stands alone, looking after Bjorn, and says, “Jeez, he’s so sensitive.”'
-  - x: 53
-    y: 1025
-    width: 1332
-    height: 57
-    alt: 'When someone says you’ve hurt them, what more evidence do you need?'
 
