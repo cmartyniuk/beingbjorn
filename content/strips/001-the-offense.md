@@ -5,7 +5,7 @@ slug: the-offense
 draft: false
 image: 001-the-offense.png
 alt: A villager stands on Bjorn's feet.
-aphorism: "Sometimes, more evidence is not what's needed.""
+aphorism: "Sometimes, more evidence is not what's needed."
 
 sourceWidth: 1448
 sourceHeight: 1086
