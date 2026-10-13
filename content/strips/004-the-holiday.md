@@ -5,7 +5,7 @@ slug: the-holiday
 draft: false
 image: 004-the-holiday.png
 alt: Bjorn carries an older friend's luggage and helps him throughout a holiday, but is called selfish for enjoying his day.
-aphorism: "Notice who is carrying your bags before calling them selfish."
+aphorism: "Notice who is carrying your bags before calling others selfish."
 
 sourceWidth: 1536
 sourceHeight: 1024

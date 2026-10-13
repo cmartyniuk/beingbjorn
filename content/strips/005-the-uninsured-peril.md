@@ -2,7 +2,7 @@
 title: The Uninsured Peril
 number: 5
 slug: the-uninsured-peril
-draft: true
+draft: false
 image: 005-the-uninsured-peril.png
 alt: Bjorn confides in a friend after losing his home and is met with a cruelly correct remark about insurance.
 aphorism: "Being right is no excuse for being cruel."
