@@ -5,7 +5,12 @@ const { comic, previous, next } = Astro.props;
 <ol class="panel-strip" aria-label={comic.title}>{comic.panels.map((p,i) => <li><img src={p.variants.at(-1).src} srcset={p.variants.map(v => v.src+' '+v.width+'w').join(', ')} sizes="(max-width: 599px) calc(100vw - 32px), (max-width: 899px) calc((100vw - 56px) / 2), (max-width: 1152px) calc((100vw - 78px) / 3), 358px" width={p.width} height={p.height} alt={p.alt} loading={i === 0 ? 'eager' : 'lazy'}/></li>)}</ol>
 {comic.aphorism && <p class="aphorism"><strong>{comic.aphorism}</strong></p>}
 {comic.transcript && <details class="transcript"><summary>transcript</summary><div class="transcript-text">{comic.transcript}</div></details>}
-<nav class="bottom-nav" aria-label="Comic navigation">{previous ? <a href={'/strips/'+previous.slug+'/'}>← previous</a> : <span/>}<a href="/archive/">all the strips</a>{next ? <a href={'/strips/'+next.slug+'/'}>next →</a> : <span/>}</nav>
+<nav class="bottom-nav" aria-label="Comic navigation">{previous ? <a href={'/strips/'+previous.slug+'/'}>← previous</a> : <span/>}<a href="/archive/">all the strips</a>{next ? <a
+  href={'/strips/' + next.slug + '/'}
+  data-umami-event="next-strip"
+  data-umami-event-from={comic.slug}
+  data-umami-event-to={next.slug}
+>next →</a> : <span/>}</nav>
 
 <style>
   .panel-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }

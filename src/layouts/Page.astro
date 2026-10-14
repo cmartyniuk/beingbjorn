@@ -6,5 +6,11 @@ const { title = "It's Not Easy Being Bjorn", current = '' } = Astro.props;
 <html lang="en"><head><link rel="alternate" type="application/rss+xml" title="It's Not Easy Being Bjorn" href="/rss.xml" /><link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" /><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#fbf6e9"/><title>{title}</title><link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)}/></head>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" /><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#fbf6e9"/><title>{title}</title><link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)}/><script
+  is:inline
+  defer
+  src="https://cloud.umami.is/script.js"
+  data-website-id="fa6facd0-b3a7-47a0-a07b-155485b3b6c0"
+  data-domains="beingbjorn.com,www.beingbjorn.com"
+></script></head>
 <body><div class="page"><header class="header"><a href="/" class="logo" aria-label="It's Not Easy Being Bjorn">It's Not Easy<span>Being Bjorn</span></a><nav class="nav" aria-label="Main navigation">{[['/', 'latest'], ['/archive/', 'archive'], ['/about/', 'about']].map(([href,label]) => <a href={href} aria-current={current === label ? 'page' : undefined}>{label}</a>)}</nav></header><div class="scribble" aria-hidden="true"></div><main><slot/></main><footer class="footer"><div class="doodle" aria-hidden="true">✳</div>© {new Date().getFullYear()} It's Not Easy Being Bjorn &mdash; <a href="/rss.xml">RSS</a></footer></div></body></html>
