@@ -16,8 +16,42 @@ data-umami-event-from={comic.slug}>all the strips</a>{next ? <a
 >next →</a> : <span/>}</nav>
 
 <style>
-  .panel-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.panel-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.panel-strip li {
+  flex: 0 1 auto;
+}
+
+.panel-strip img {
+  width: auto;
+  height: 300px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 899px) {
+  .panel-strip img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 599px) {
+  .panel-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .panel-strip img {
+    width: 100%;
+    height: auto;
+  }
+}
+
   .aphorism { text-align: center; font-size: clamp(1.25rem, 2.5vw, 1.65rem); line-height: 1.4; margin: 24px auto 0; max-width: 900px; }
-  @media (max-width: 899px) { .panel-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 599px) { .panel-strip { grid-template-columns: 1fr; } }
 </style>
