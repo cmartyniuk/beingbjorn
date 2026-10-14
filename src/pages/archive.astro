@@ -2,4 +2,5 @@
 import Page from '../layouts/Page.astro';
 import comics from '../data/comics.json';
 ---
-<Page title="Archive — It's Not Easy Being Bjorn" current="archive"><div class="inner"><h1>all the strips</h1>{[...comics].reverse().map(c => <a class="archive-entry" href={'/strips/'+c.slug+'/'}><span>{String(c.number).padStart(3,'0')}</span><strong>{c.title} ↗</strong></a>)}</div></Page>
+<Page title="Archive — It's Not Easy Being Bjorn" current="archive"><div class="inner"><h1>all the strips</h1>{[...comics].reverse().map(c => <a class="archive-entry" data-umami-event="archive-strip"
+data-umami-event-strip={c.slug} href={'/strips/'+c.slug+'/'}><span>{String(c.number).padStart(3,'0')}</span><strong>{c.title} ↗</strong></a>)}</div></Page>
