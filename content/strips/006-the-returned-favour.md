@@ -2,7 +2,7 @@
 title: The Returned Favour
 number: 6
 slug: the-returned-favour
-draft: true
+draft: false
 image: 006-the-returned-favour.png
 alt: Bjorn finally asks a friend for help after doing many favours, only to be accused of keeping score.
 aphorism: "Reciprocity is not the same thing as keeping score."
